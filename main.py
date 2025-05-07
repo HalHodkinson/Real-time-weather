@@ -5,14 +5,14 @@ from geopy import GoogleV3
 while True: #loop the program until break reached
     print()
     place_name = input('Input the location you want a current weather report from?: ') #get location from user
-    geolocator = GoogleV3(api_key = 'AIzaSyB3y2bMWVeTDrHzsOK_KBy_1Y846S8i1VU') #access google maps geocode API
+    geolocator = GoogleV3(api_key = 'YOUR_API_KEY') #access google maps geocode API
     coordinates = geolocator.geocode(place_name) #geocode (place name to coordinates)
 
     if coordinates: #error handle an unrecognised location input
-        open_weather_api_key = 'YOUR_API_KEy' #google maps API key
+        google_maps_api_key = 'YOUR_API_KEY' #google maps API key
         lat = coordinates.latitude #latitude
         lon = coordinates.longitude #longitude
-        url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={open_weather_api_key}' #API request for current weather
+        url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={google_maps_api_key}' #API request for current weather
 
         response = requests.get(url) #get response from API
         data = response.json() #get data in JSON format
